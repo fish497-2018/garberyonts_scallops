@@ -30,7 +30,7 @@ df <- select(scallop_df, Location, FullScallop_Number, T1_height, T1_width,
 
 ```
 
-#Linear Model
+**Linear Model**
 
 This linear model allows us to determine important factors impacting adduction diameter of *Crassadomea gigantea*.
 
