@@ -125,40 +125,6 @@ $(document).ready(function () {
 <div id="linear-model" class="section level1">
 <h1>Linear Model</h1>
 <p>This linear model allows us to determine important factors impacting adduction diameter of <em>Crassadomea gigantea</em>.</p>
-<pre class="r"><code>df$sex &lt;- as.numeric(df$sex)
-df$T2_length &lt;- as.numeric(df$T2_length)
-df$Location &lt;- as.factor(df$Location)
-df$T2_adductor &lt;- as.numeric(df$T2_adductor)
-
-# Linear Model
-linear_model &lt;- lm(T2_adductor ~ sex+T2_length+T2_width+T2_height+mc_1_mode+Location, data = df)
-summary(linear_model)</code></pre>
-<pre><code>## 
-## Call:
-## lm(formula = T2_adductor ~ sex + T2_length + T2_width + T2_height + 
-##     mc_1_mode + Location, data = df)
-## 
-## Residuals:
-##     Min      1Q  Median      3Q     Max 
-## -6.3694 -1.1347 -0.0692  1.0904 17.2806 
-## 
-## Coefficients:
-##             Estimate Std. Error t value Pr(&gt;|t|)    
-## (Intercept) -5.68981    1.19684  -4.754 2.81e-06 ***
-## sex         -0.42487    0.27816  -1.527   0.1275    
-## T2_length    0.05543    0.03095   1.791   0.0741 .  
-## T2_width     0.45866    0.08433   5.439 9.48e-08 ***
-## T2_height    0.08174    0.03447   2.371   0.0182 *  
-## mc_1_mode   -0.20918    0.12299  -1.701   0.0898 .  
-## LocationNB   2.40853    0.41892   5.749 1.81e-08 ***
-## LocationTI   1.52461    0.23395   6.517 2.22e-10 ***
-## ---
-## Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1
-## 
-## Residual standard error: 2.087 on 390 degrees of freedom
-##   (1 observation deleted due to missingness)
-## Multiple R-squared:  0.4674, Adjusted R-squared:  0.4578 
-## F-statistic: 48.89 on 7 and 390 DF,  p-value: &lt; 2.2e-16</code></pre>
 <pre class="r"><code># Table Output
 stargazer(linear_model, title = &quot;Linear Model&quot;,
           type= &quot;text&quot;,
