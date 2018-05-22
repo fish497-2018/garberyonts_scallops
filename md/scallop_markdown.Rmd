@@ -2,7 +2,8 @@
 title: "Scallop_markdown"
 output: html_document
 ---
-``` {r}
+
+```{r}
 scallop_df <- read.csv("Data/Rdataformat_03132018.csv")
 head(scallop_df)
 ```

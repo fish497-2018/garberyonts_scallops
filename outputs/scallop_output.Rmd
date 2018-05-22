@@ -1,0 +1,57 @@
+---
+title: "scallop_markdown"
+output: html_document
+---
+
+```{r, include=FALSE}
+library(tidyr)
+library(dplyr)
+library(utils)
+library(diveRsity)
+library(ggplot2)
+library(stargazer)
+library(stats)
+library(utils)
+library(tinytex)
+library(quantreg)
+library(broom)
+library(ggpubr)
+library(rmarkdown)
+```
+
+
+```{r, include=FALSE}
+scallop_df <- read.csv("../Data/Rdataformat_03132018.csv")
+head(scallop_df)
+
+df <- select(scallop_df, Location, FullScallop_Number, T1_height, T1_width,
+                  T1_length, T2_height, T2_width, T2_length, T2_whole_weight, 
+                  T2_body_weight, T2_adductor, sex, mc_1_mode, mc_2_mean, mc_3_max, sex)
+
+```
+
+#Linear Model
+
+This linear model allows us to determine important factors impacting adduction diameter of *Crassadomea gigantea*.
+
+```{r, include=FALSE}
+df$sex <- as.numeric(df$sex)
+df$T2_length <- as.numeric(df$T2_length)
+df$Location <- as.factor(df$Location)
+df$T2_adductor <- as.numeric(df$T2_adductor)
+
+# Linear Model
+linear_model <- lm(T2_adductor ~ sex+T2_length+T2_width+T2_height+mc_1_mode+Location, data = df)
+summary(linear_model)
+```
+
+```{r}
+# Table Output
+stargazer(linear_model, title = "Linear Model",
+          type= "text",
+          out = "mini_project.html",
+          covariate.labels=c( 'Sex', 'Length', 'Width', 'Height', 'Maturation Stage', 'Neah Bay', 'Totten Inlet'),
+          dep.var.labels=c("Adductor Diameter (mm)", ""),
+          single.row = T)
+```
+
