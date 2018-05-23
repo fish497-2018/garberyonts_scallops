@@ -122,16 +122,8 @@ $(document).ready(function () {
 </div>
 
 
-<div id="linear-model" class="section level1">
-<h1>Linear Model</h1>
+<p><strong>Linear Model</strong></p>
 <p>This linear model allows us to determine important factors impacting adduction diameter of <em>Crassadomea gigantea</em>.</p>
-<pre class="r"><code># Table Output
-stargazer(linear_model, title = &quot;Linear Model&quot;,
-          type= &quot;text&quot;,
-          out = &quot;mini_project.html&quot;,
-          covariate.labels=c( 'Sex', 'Length', 'Width', 'Height', 'Maturation Stage', 'Neah Bay', 'Totten Inlet'),
-          dep.var.labels=c(&quot;Adductor Diameter (mm)&quot;, &quot;&quot;),
-          single.row = T)</code></pre>
 <pre><code>## 
 ## Linear Model
 ## ===============================================
@@ -155,7 +147,6 @@ stargazer(linear_model, title = &quot;Linear Model&quot;,
 ## F Statistic           48.894*** (df = 7; 390)  
 ## ===============================================
 ## Note:               *p&lt;0.1; **p&lt;0.05; ***p&lt;0.01</code></pre>
-</div>
 
 
 

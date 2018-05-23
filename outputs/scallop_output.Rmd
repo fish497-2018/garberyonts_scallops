@@ -40,12 +40,12 @@ df$T2_length <- as.numeric(df$T2_length)
 df$Location <- as.factor(df$Location)
 df$T2_adductor <- as.numeric(df$T2_adductor)
 
-# Linear Model
+
 linear_model <- lm(T2_adductor ~ sex+T2_length+T2_width+T2_height+mc_1_mode+Location, data = df)
 summary(linear_model)
 ```
 
-```{r}
+```{r, echo=FALSE}
 # Table Output
 stargazer(linear_model, title = "Linear Model",
           type= "text",

@@ -1,3 +1,5 @@
+install.packages('rmarkdown')
+
 
 library(tidyr)
 library(dplyr)
@@ -11,6 +13,7 @@ library(tinytex)
 library(quantreg)
 library(broom)
 library(ggpubr)
+library(rmarkdown)
 
 # Read in all data, .csv file #
 
