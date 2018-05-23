@@ -55,3 +55,62 @@ stargazer(linear_model, title = "Linear Model",
           single.row = T)
 ```
 
+This table is showing that, given adductor diameter as the dependent variable, site and external metrics (length, width, height) are significant factors in predicting adductor diameter.
+
+Thus we ran a linear regression with the external metric on the y axis and the adductor diameter and the x axis.
+Correlation values for all three external metrics ranged from 0.5-0.6.
+
+```{r, echo=FALSE}
+# External Metrics (T2) vs. Adductor Muscle Diameter
+
+#T2_Length
+
+plot1<- ggplot(df, aes(T2_length, T2_adductor)) +
+  geom_jitter() +
+  theme_classic()+
+  xlab('Length (mm)')+
+  ylab('Diameter (mm)')+
+  ggtitle('Adductor Diameter vs. Shell Length')+
+  geom_smooth(method='lm', aes(colour='black'))+
+  theme(legend.position = 'none') +
+  theme(plot.title = element_text(hjust = 0.5, face = 'bold', size = 20)) +
+  scale_y_continuous(limits = c(0,20))+
+  scale_x_continuous(limits = c(15,90))+
+  annotate('text', label = "p-value = 1.863815e-37", x = 75, y = 1.5)
+
+
+
+#T2_height
+
+plot2<- ggplot(df, aes(T2_height, T2_adductor)) +
+  geom_jitter() +
+  theme_classic()+
+  xlab('Height (mm)')+
+  ylab('Diameter (mm)')+
+  ggtitle('Adductor Diameter vs. Shell Height')+
+  geom_smooth(method='lm', aes(colour='black'))+
+  theme(legend.position = 'none') +
+  theme(plot.title = element_text(hjust = 0.5, face = 'bold', size = 20))+
+  annotate('text', label = 'p-value = 5.037393e-39', x = 75, y = 1.5)
+
+
+
+#T2_width
+
+plot3 <- ggplot(df, aes(T2_width, T2_adductor)) +
+  geom_jitter() +
+  theme_classic()+
+  xlab('Width (mm)')+
+  ylab('Diameter (mm)')+
+  ggtitle('Adductor Diameter vs. Shell Width')+
+  geom_smooth(method='lm', aes(colour='black'))+
+  theme(legend.position = 'none') +
+  theme(plot.title = element_text(hjust = 0.5, size = 20, face = 'bold'))+
+  annotate('text', label = 'p-value = 4.380831e-30', x = 20, y = 2)+
+  xlim(8,25)
+
+
+
+#build all the plots into one graph
+multiplot(plot1,plot2,plot3,cols = 1)
+```
