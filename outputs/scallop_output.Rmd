@@ -60,7 +60,7 @@ This table is showing that, given adductor diameter as the dependent variable, s
 Thus we ran a linear regression with the external metric on the y axis and the adductor diameter and the x axis.
 Correlation values for all three external metrics ranged from 0.5-0.6.
 
-```{r, echo=FALSE}
+```{r, echo=FALSE, message=F, warning=F}
 # External Metrics (T2) vs. Adductor Muscle Diameter
 
 #T2_Length
