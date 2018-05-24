@@ -1,6 +1,6 @@
 ---
 title: "scallop_markdown"
-output: word_document
+output: html_document
 ---
 ###Purple Hinged Rock Scallops (*Crassadomea gigantea*)
 
