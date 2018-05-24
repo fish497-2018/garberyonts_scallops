@@ -1,7 +1,12 @@
 ---
 title: "scallop_markdown"
-output: html_document
+output: word_document
 ---
+###Purple Hinged Rock Scallops (*Crassadomea gigantea*)
+
+```{r pressure, echo=F}
+knitr::include_graphics("/Users/maya/Desktop/scallop.jpg")
+```
 
 ```{r, include=FALSE}
 library(tidyr)
@@ -114,3 +119,4 @@ plot3 <- ggplot(df, aes(T2_width, T2_adductor)) +
 #build all the plots into one graph
 multiplot(plot1,plot2,plot3,cols = 1)
 ```
+
