@@ -24,7 +24,7 @@ knitr::include_graphics("/Users/maya/Desktop/scallop.jpg")
 - species range from Baja California to the Gulf of Alaska
 - filter feeders, up to 25 year life-span
 - vulnerable to overfishing
-- No current aquaculture production
+- no current aquaculture production
 
 ##Research Question
 
@@ -35,11 +35,11 @@ knitr::include_graphics("/Users/maya/Desktop/scallop.jpg")
 
 Collected data from our three grow out sites (Neah Bay, Dabob Bay, and Totten Inlet)
 
-```{r, include=FALSE}
-scallop_df <- read.csv("Rdataformat_03132018.csv") %>% 
+```{r, include=FALSE, echo=T}
+scallop <- read.csv("Rdataformat_03132018.csv") %>% 
   filter(Location, sex, mc_1_mode, T2_adductor) %>% 
   setnames(old=c("T2_adductor","mc_1_mode", "sex"), new=c("Adductor Diameter (mm)", "Maturation Stage", "Sex"))
-knitr::kable(scallop_df)
+knitr::kable(scallop)
 ```
 
 Gonad tissue samples were collected and histology slides were prepared to rate maturation stages of each individual scallop. 
@@ -48,3 +48,58 @@ Gonad tissue samples were collected and histology slides were prepared to rate m
 
 ```{r, echo=F,out.width = "600px"}
 knitr::include_graphics("/Users/maya/Desktop/Screen Shot 2018-05-23 at 2.55.12 PM.png")
+```
+
+##Results
+
+External metrics were significant (p-value<0.001) in determining internal adductor diameter.
+Correlation values 0.59-0.6
+
+
+```{r, echo=FALSE, warning=F}
+scallop_df <- read.csv("Rdataformat_03132018.csv")
+df <- select(scallop_df, Location, FullScallop_Number, T1_height,    T1_width,T1_length, T2_height, T2_width, T2_length, T2_whole_weight, T2_body_weight, T2_adductor, sex, mc_1_mode, mc_2_mean, mc_3_max, sex)
+
+df$T2_adductor <- as.numeric(df$T2_adductor)
+df$T2_length <- as.numeric(df$T2_length)
+df$T2_width <- as.numeric(df$T2_width)
+df$T2_height <- as.numeric(df$T2_height)
+
+plot1<- ggplot(df, aes(T2_length, T2_adductor)) +
+  geom_jitter() +
+  theme_classic()+
+  xlab('Length (mm)')+
+  ylab('Diameter (mm)')+
+  ggtitle('Adductor Diameter vs. Shell Length')+
+  geom_smooth(method='lm', aes(colour='black'))+
+  theme(legend.position = 'none') +
+  theme(plot.title = element_text(hjust = 0.5, face = 'bold', size =   20)) +
+  scale_y_continuous(limits = c(0,20))+
+  scale_x_continuous(limits = c(15,90))+
+  annotate('text', label = "p-value = 1.863815e-37", x = 75, y =1.5)
+
+plot2<- ggplot(df, aes(T2_height, T2_adductor)) +
+  geom_jitter() +
+  theme_classic()+
+  xlab('Height (mm)')+
+  ylab('Diameter (mm)')+
+  ggtitle('Adductor Diameter vs. Shell Height')+
+  geom_smooth(method='lm', aes(colour='black'))+
+  theme(legend.position = 'none') +
+  theme(plot.title = element_text(hjust = 0.5, face = 'bold', size =   20))+
+  annotate('text', label = 'p-value = 5.037393e-39', x = 75, y =    2)
+
+plot3 <- ggplot(df, aes(T2_width, T2_adductor)) +
+  geom_jitter() +
+  theme_classic()+
+  xlab('Width (mm)')+
+  ylab('Diameter (mm)')+
+  ggtitle('Adductor Diameter vs. Shell Width')+
+  geom_smooth(method='lm', aes(colour='black'))+
+  theme(legend.position = 'none') +
+  theme(plot.title = element_text(hjust = 0.5, size = 20, face = 'bold'))+
+  annotate('text', label = 'p-value = 4.380831e-30', x = 23, y = 5)+
+  scale_x_continuous(limits = c(5,25))
+
+multiplot(plot1,plot2,plot3,cols = 1)
+```
