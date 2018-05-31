@@ -109,7 +109,21 @@ multiplot(plot1,plot2,plot3,cols = 1)
 
 There was no significant relatioship between adductor diameter and gonad maturation stage.
   
+```{r, echo=F}
 
 
+df$mc_1_mode <- as.factor(df$mc_1_mode)
+df$T2_adductor <- as.numeric(df$T2_adductor)
 
-
+ggplot(df, aes(mc_1_mode, T2_adductor), fill=mc_1_mode, na.rm=TRUE) +
+  geom_boxplot() +
+  geom_jitter(alpha=0.5 ) +
+  scale_x_discrete(breaks  = c(-1,0,1,2,3,4,5), labels = c(-1,0,1,2,3,4,5)) +
+  scale_color_brewer(palette = "Dark2") +
+  theme_classic() +
+  ggtitle('Maturation Stage vs. Adductor Diameter') +
+  theme(plot.title = element_text(hjust = 0.05, size = 18, face= "bold")) +
+  xlab("Maturation Stage") +
+  ylab("Adductor Diameter (mm)") +
+  theme(legend.position = 'none')
+```
