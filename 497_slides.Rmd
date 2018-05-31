@@ -55,7 +55,7 @@ knitr::include_graphics("/Users/maya/Desktop/Screen Shot 2018-05-23 at 2.55.12 P
 ##Results
 
 * External metrics were significant (p-value<0.001) in determining internal adductor diameter.
-+ Correlation values 0.59-0.6
+  + Correlation values 0.59-0.6
 
 
 ```{r, echo=FALSE, warning=F}
@@ -129,3 +129,19 @@ ggplot(df, aes(mc_1_mode, T2_adductor), fill=mc_1_mode, na.rm=TRUE) +
   ylab("Adductor Diameter (mm)") +
   theme(legend.position = 'none')
 ```
+
+
+##Tidyr
+
+```{r, echo=T}
+temp_t <- read.csv("full_temp.csv") %>% 
+ separate( Date, into = c("month", "year"), sep = " ") 
+```
+
+```{r, echo=F}  
+knitr::kable(temp_t)
+```
+
+  
+  
+  
