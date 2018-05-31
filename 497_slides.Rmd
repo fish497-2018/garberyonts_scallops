@@ -1,0 +1,50 @@
+---
+title: "497_presentions"
+output: ioslides_presentation
+---
+
+#required library
+```{r, include=TRUE}
+library(data.table)
+library(tidyr)
+library(dplyr)
+library(utils)
+library(diveRsity)
+library(ggplot2)
+library(stargazer)
+library(rmarkdown)
+```
+
+##Purple Hinged Rock Scallops (*Crassadomea gigantea*)
+
+```{r pressure, echo=F,out.width = "200px"}
+knitr::include_graphics("/Users/maya/Desktop/scallop.jpg")
+```
+
+- species range from Baja California to the Gulf of Alaska
+- filter feeders, up to 25 year life-span
+- vulnerable to overfishing
+- No current aquaculture production
+
+##Research Question
+
+1. Does adductor diameter change as the scallop gonad matures?
+2. What factors influnce adductor diameter and gonad maturation stage?
+
+##Methods
+
+Collected data from our three grow out sites (Neah Bay, Dabob Bay, and Totten Inlet)
+
+```{r, include=FALSE}
+scallop_df <- read.csv("Rdataformat_03132018.csv") %>% 
+  filter(Location, sex, mc_1_mode, T2_adductor) %>% 
+  setnames(old=c("T2_adductor","mc_1_mode", "sex"), new=c("Adductor Diameter (mm)", "Maturation Stage", "Sex"))
+knitr::kable(scallop_df)
+```
+
+Gonad tissue samples were collected and histology slides were prepared to rate maturation stages of each individual scallop. 
+
+24 acini were rated for each individual and the mode across all 24 acini determined overall maturation stage for the organism.
+
+```{r, echo=F,out.width = "600px"}
+knitr::include_graphics("/Users/maya/Desktop/Screen Shot 2018-05-23 at 2.55.12 PM.png")
