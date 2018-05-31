@@ -1,10 +1,9 @@
 ---
-title: "497_presentions"
+title: "497 Presentation"
 output: ioslides_presentation
 ---
 
-#required library
-```{r, include=TRUE}
+```{r, include=F}
 library(data.table)
 library(tidyr)
 library(dplyr)
@@ -26,7 +25,7 @@ knitr::include_graphics("/Users/maya/Desktop/scallop.jpg")
 - vulnerable to overfishing
 - no current aquaculture production
 
-##Research Question?
+##Research Questions?
 
 1. Do external metrics accurately predict internal adductor diameter?
 2. Does adductor diameter change as the scallop matures?
@@ -35,18 +34,21 @@ knitr::include_graphics("/Users/maya/Desktop/scallop.jpg")
 
 Collected data from our three grow out sites (Neah Bay, Dabob Bay, and Totten Inlet)
 
-```{r, include=FALSE, echo=T}
+```{r, echo=T, warning=F}
 scallop <- read.csv("Rdataformat_03132018.csv") %>% 
-  filter(Location, sex, mc_1_mode, T2_adductor) %>% 
-  setnames(old=c("T2_adductor","mc_1_mode", "sex"), new=c("Adductor Diameter (mm)", "Maturation Stage", "Sex"))
+  select(Location, sex, mc_1_mode, T2_adductor) %>% 
+  setnames(old=c("T2_adductor","mc_1_mode", "sex"), new=c("Adductor   Diameter (mm)", "Maturation Stage", "Sex"))
+```
+```{r, echo=F}
 knitr::kable(scallop)
 ```
 
+##Methods
 Gonad tissue samples were collected and histology slides were prepared to rate maturation stages of each individual scallop. 
 
 24 acini were rated for each individual and the mode across all 24 acini determined overall maturation stage for the organism.
 
-```{r, echo=F,out.width = "600px"}
+```{r, echo=F,out.width = "500px"}
 knitr::include_graphics("/Users/maya/Desktop/Screen Shot 2018-05-23 at 2.55.12 PM.png")
 ```
 
