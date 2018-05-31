@@ -26,10 +26,10 @@ knitr::include_graphics("/Users/maya/Desktop/scallop.jpg")
 - vulnerable to overfishing
 - no current aquaculture production
 
-##Research Question
+##Research Question?
 
-1. Does adductor diameter change as the scallop gonad matures?
-2. What factors influnce adductor diameter and gonad maturation stage?
+1. Do external metrics accurately predict internal adductor diameter?
+2. Does adductor diameter change as the scallop matures?
 
 ##Methods
 
@@ -52,8 +52,8 @@ knitr::include_graphics("/Users/maya/Desktop/Screen Shot 2018-05-23 at 2.55.12 P
 
 ##Results
 
-External metrics were significant (p-value<0.001) in determining internal adductor diameter.
-Correlation values 0.59-0.6
+* External metrics were significant (p-value<0.001) in determining internal adductor diameter.
++ Correlation values 0.59-0.6
 
 
 ```{r, echo=FALSE, warning=F}
@@ -103,3 +103,13 @@ plot3 <- ggplot(df, aes(T2_width, T2_adductor)) +
 
 multiplot(plot1,plot2,plot3,cols = 1)
 ```
+
+
+##Results
+
+There was no significant relatioship between adductor diameter and gonad maturation stage.
+  
+
+
+
+
